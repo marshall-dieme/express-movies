@@ -1,5 +1,6 @@
 package org.spring.expressmovie.service;
 
+import java.util.List;
 import org.spring.expressmovie.model.Director;
 import org.spring.expressmovie.repository.DirectorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,19 +10,23 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DirectorService {
-    
-    @Autowired
-    DirectorRepository directorRepository;
 
-    public Director addDirector(Director director) {
-        return directorRepository.save(director);
-    }
+  @Autowired
+  DirectorRepository directorRepository;
 
-    public Page<Director> getAll(Pageable pageable) {
-        return directorRepository.findAll(pageable);
-    }
+  public Director addDirector(Director director) {
+    return directorRepository.save(director);
+  }
 
-    public Director getByFirstNameOrLastName(String firstName, String lastName) {
-        return directorRepository.findByFirstNameOrLastName(firstName, lastName);
-    }
+  public Page<Director> getAll(Pageable pageable) {
+    return directorRepository.findAll(pageable);
+  }
+
+  public Director getByFirstNameOrLastName(String firstName, String lastName) {
+    return directorRepository.findByFirstNameOrLastName(firstName, lastName);
+  }
+
+  public List<Director> getByMovieTitle(String title) {
+    return directorRepository.findByMovieTitle(title);
+  }
 }

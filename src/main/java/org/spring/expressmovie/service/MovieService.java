@@ -1,6 +1,7 @@
 package org.spring.expressmovie.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.spring.expressmovie.model.Movie;
 import org.spring.expressmovie.repository.MovieRepository;
@@ -45,7 +46,10 @@ public class MovieService {
     }
 
     public void removeMovie(String title){
-        movieRepository.delete(getByTitle(title));
+        movieRepository.deleteByTitle(title);
     }
     
+    public List<Movie> getByDirectorName(String firstName, String lastName) {
+        return movieRepository.findByDirectorName(firstName, lastName);
+    }
 }
